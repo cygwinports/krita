@@ -1,0 +1,12 @@
+--- origsrc/krita-3.1.2.1/plugins/extensions/gmic/3rdparty/gmic/CImg.h	2017-01-31 07:18:49.000000000 -0600
++++ src/krita-3.1.2.1/plugins/extensions/gmic/3rdparty/gmic/CImg.h	2017-02-03 13:50:38.236075400 -0600
+@@ -43385,6 +43385,9 @@ namespace cimg_library_suffixed {
+             if (is_axes) { if (visible_cursor) { disp.hide_mouse(); visible_cursor = false; }}
+             else { if (!visible_cursor) { disp.show_mouse(); visible_cursor = true; }}
+             const int d = (depth()>1)?depth():0;
++#undef _X
++#undef _Y
++#undef _Z
+             int
+               _X = (int)X, _Y = (int)Y, _Z = (int)Z,
+               w = disp.width(), W = width() + d,

@@ -1,0 +1,39 @@
+inherit kf5
+
+NAME="krita"
+VERSION=3.1.2
+RELEASE=1
+CATEGORY="Graphics"
+SUMMARY="KDE painting program"
+DESCRIPTION="Krita is a professional sketching and painting program."
+HOMEPAGE="https://krita.org/"
+SRC_URI="mirror://kde/stable/krita/${VERSION}/krita-${VERSION}.1.tar.gz"
+SRC_DIR="krita-${VERSION}.1"
+PATCH_URI="
+	3.1.2-dllexport.patch
+	3.1.2-gmic-cygwin.patch
+	3.1.2-libs-cygwin.patch
+"
+
+PKG_NAMES="krita"
+krita_CONTENTS="
+	etc/postinstall/krita.sh
+	etc/xdg/kritarc
+	usr/bin/cygkrita*
+	usr/bin/gmicparser.exe
+	usr/bin/krita.exe
+	usr/lib/kritaplugins/
+	usr/share/applications/krita_*.desktop
+	usr/share/applications/org.kde.krita.desktop
+	usr/share/color-schemes/Krita*.colors
+	usr/share/color/icc/krita/
+	usr/share/doc/krita/
+	usr/share/icons/hicolor/*/apps/calligrakrita.*
+	usr/share/icons/hicolor/*/mimetypes/application-x-krita.*
+	usr/share/krita/
+	usr/share/kritaplugins/
+	usr/share/locale/*/LC_MESSAGES/krita.mo
+	usr/share/metainfo/org.kde.krita.appdata.xml
+"
+# there is no public API
+PKG_IGNORE="usr/lib/libkrita*.dll.a"

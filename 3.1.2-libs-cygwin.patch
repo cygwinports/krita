@@ -1,0 +1,62 @@
+--- origsrc/krita-3.1.2.1/krita/main.cc	2017-01-31 07:18:49.000000000 -0600
++++ src/krita-3.1.2.1/krita/main.cc	2017-02-05 02:44:04.091352200 -0600
+@@ -130,7 +130,7 @@ extern "C" int main(int argc, char **arg
+     // first create the application so we can create a pixmap
+     KisApplication app(key, argc, argv);
+ 
+-#ifdef Q_OS_LINUX
++#if defined Q_OS_LINUX || defined Q_OS_CYGWIN
+     qputenv("XDG_DATA_DIRS", QFile::encodeName(KoResourcePaths::getApplicationRoot() + "share") + ":" + qgetenv("XDG_DATA_DIRS"));
+ #else
+     qputenv("XDG_DATA_DIRS", QFile::encodeName(KoResourcePaths::getApplicationRoot() + "share"));
+--- origsrc/krita-3.1.2.1/libs/image/kis_image_config.cpp	2017-01-31 07:18:49.000000000 -0600
++++ src/krita-3.1.2.1/libs/image/kis_image_config.cpp	2017-02-05 02:41:56.568802600 -0600
+@@ -312,7 +312,7 @@ void KisImageConfig::setLazyFrameCreatio
+ }
+ 
+ 
+-#if defined Q_OS_LINUX
++#if defined Q_OS_LINUX || defined Q_OS_CYGWIN
+ #include <sys/sysinfo.h>
+ #elif defined Q_OS_FREEBSD || defined Q_OS_NETBSD || defined Q_OS_OPENBSD
+ #include <sys/sysctl.h>
+@@ -331,7 +331,7 @@ int KisImageConfig::totalRAM()
+     int totalMemory = 1000; // MiB
+     int error = 1;
+ 
+-#if defined Q_OS_LINUX
++#if defined Q_OS_LINUX || defined Q_OS_CYGWIN
+     struct sysinfo info;
+ 
+     error = sysinfo(&info);
+--- origsrc/krita-3.1.2.1/libs/ui/opengl/kis_opengl_canvas2_p.h	2017-01-31 07:18:49.000000000 -0600
++++ src/krita-3.1.2.1/libs/ui/opengl/kis_opengl_canvas2_p.h	2017-02-05 02:42:45.090692300 -0600
+@@ -76,7 +76,7 @@ namespace Sync {
+ #endif
+             k_glClientWaitSync = (kis_glClientWaitSync)ctx->getProcAddress("glClientWaitSync");
+         }
+-#elif defined Q_OS_LINUX || defined Q_OS_MAC
++#elif defined Q_OS_LINUX || defined Q_OS_MAC || defined Q_OS_CYGWIN
+         if (KisOpenGL::supportsFenceSync()) {
+             k_glFenceSync  = (kis_glFenceSync)ctx->getProcAddress("glFenceSync");
+             k_glGetSynciv  = (kis_glGetSynciv)ctx->getProcAddress("glGetSynciv");
+--- origsrc/krita-3.1.2.1/libs/widgetutils/KoFileDialog.cpp	2017-01-31 07:18:49.000000000 -0600
++++ src/krita-3.1.2.1/libs/widgetutils/KoFileDialog.cpp	2017-02-05 02:43:28.784841200 -0600
+@@ -335,7 +335,7 @@ const QStringList KoFileDialog::getFilte
+                     if (withAllSupportedEntry) {
+                         allSupported.prepend(glob + " ");
+                     }
+-#ifdef Q_OS_LINUX
++#if defined Q_OS_LINUX || defined Q_OS_CYGWIN
+                     if (qgetenv("XDG_CURRENT_DESKTOP") == "GNOME") {
+                         oneFilter.prepend(glob.toUpper() + " ");
+                         if (withAllSupportedEntry) {
+@@ -350,7 +350,7 @@ const QStringList KoFileDialog::getFilte
+                     if (withAllSupportedEntry) {
+                         allSupported.append(glob + " ");
+                     }
+-#ifdef Q_OS_LINUX
++#if defined Q_OS_LINUX || defined Q_OS_CYGWIN
+                     if (qgetenv("XDG_CURRENT_DESKTOP") == "GNOME") {
+                         oneFilter.append(glob.toUpper() + " ");
+                         if (withAllSupportedEntry) {

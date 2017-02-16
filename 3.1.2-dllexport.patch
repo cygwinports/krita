@@ -1,0 +1,44 @@
+--- origsrc/krita-3.1.2.1/libs/image/brushengine/kis_paintop_preset.h	2017-01-31 07:18:49.000000000 -0600
++++ src/krita-3.1.2.1/libs/image/brushengine/kis_paintop_preset.h	2017-02-03 16:08:23.587921700 -0600
+@@ -110,7 +110,7 @@ public:
+      * @brief The UpdatedPostponer class
+      * @see KisPaintopSettingsUpdateProxy::postponeSettingsChanges()
+      */
+-    class UpdatedPostponer{
++    class KRITAIMAGE_EXPORT UpdatedPostponer{
+     public:
+         UpdatedPostponer(KisPaintOpPreset *preset);
+ 
+--- origsrc/krita-3.1.2.1/libs/image/kis_algebra_2d.h	2017-01-31 07:18:49.000000000 -0600
++++ src/krita-3.1.2.1/libs/image/kis_algebra_2d.h	2017-02-03 16:25:23.605328900 -0600
+@@ -251,7 +251,7 @@ auto maxDimension(Size size) -> decltype
+     return qMax(size.width(), size.height());
+ }
+ 
+-QPainterPath KRITAGLOBAL_EXPORT smallArrow();
++QPainterPath KRITAIMAGE_EXPORT smallArrow();
+ 
+ /**
+  * Multiply width and height of \p rect by \p coeff keeping the
+--- origsrc/krita-3.1.2.1/libs/image/kis_scalar_keyframe_channel.h	2017-01-31 07:18:49.000000000 -0600
++++ src/krita-3.1.2.1/libs/image/kis_scalar_keyframe_channel.h	2017-02-05 01:04:35.790458200 -0600
+@@ -26,7 +26,7 @@ class KRITAIMAGE_EXPORT KisScalarKeyfram
+     Q_OBJECT
+ 
+ public:
+-    struct AddKeyframeCommand : public KisReplaceKeyframeCommand
++    struct KRITAIMAGE_EXPORT AddKeyframeCommand : public KisReplaceKeyframeCommand
+     {
+         AddKeyframeCommand(KisScalarKeyframeChannel *channel, int time, qreal value, KUndo2Command *parentCommand);
+     };
+--- origsrc/krita-3.1.2.1/libs/ui/tool/kis_stabilized_events_sampler.h	2017-01-31 07:18:49.000000000 -0600
++++ src/krita-3.1.2.1/libs/ui/tool/kis_stabilized_events_sampler.h	2017-02-03 16:39:37.384596900 -0600
+@@ -40,7 +40,7 @@ public:
+     void addFinishingEvent(int numSamples);
+ 
+ public:
+-    class iterator :
++    class KRITAUI_EXPORT iterator :
+         public boost::iterator_facade <iterator,
+                                        KisPaintInformation const,
+                                        boost::forward_traversal_tag >
