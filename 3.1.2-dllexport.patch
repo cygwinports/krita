@@ -20,6 +20,15 @@
  
  /**
   * Multiply width and height of \p rect by \p coeff keeping the
+@@ -407,7 +407,7 @@ KRITAIMAGE_EXPORT
+ QVector<QPointF> intersectTwoCircles(const QPointF &c1, qreal r1,
+                                      const QPointF &c2, qreal r2);
+ 
+-KRITAGLOBAL_EXPORT
++KRITAIMAGE_EXPORT
+ QTransform mapToRect(const QRectF &rect);
+ 
+ /**
 --- origsrc/krita-3.1.2.1/libs/image/kis_scalar_keyframe_channel.h	2017-01-31 07:18:49.000000000 -0600
 +++ src/krita-3.1.2.1/libs/image/kis_scalar_keyframe_channel.h	2017-02-05 01:04:35.790458200 -0600
 @@ -26,7 +26,7 @@ class KRITAIMAGE_EXPORT KisScalarKeyfram

@@ -35,8 +35,8 @@
  #endif
              k_glClientWaitSync = (kis_glClientWaitSync)ctx->getProcAddress("glClientWaitSync");
          }
--#elif defined Q_OS_LINUX || defined Q_OS_MAC
-+#elif defined Q_OS_LINUX || defined Q_OS_MAC || defined Q_OS_CYGWIN
+-#elif defined Q_OS_LINUX || defined Q_OS_OSX
++#elif defined Q_OS_LINUX || defined Q_OS_OSX || defined Q_OS_CYGWIN
          if (KisOpenGL::supportsFenceSync()) {
              k_glFenceSync  = (kis_glFenceSync)ctx->getProcAddress("glFenceSync");
              k_glGetSynciv  = (kis_glGetSynciv)ctx->getProcAddress("glGetSynciv");
