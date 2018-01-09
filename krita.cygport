@@ -1,13 +1,13 @@
 inherit kf5
 
 NAME="krita"
-VERSION=3.3.2.1
+VERSION=3.3.3
 RELEASE=1
 CATEGORY="Graphics"
 SUMMARY="KDE painting program"
 DESCRIPTION="Krita is a professional sketching and painting program."
 HOMEPAGE="https://krita.org/"
-SRC_URI="mirror://kde/stable/krita/${VERSION}/krita-${VERSION}.tar.xz"
+SRC_URI="mirror://kde/stable/krita/${VERSION}/krita-${VERSION}.tar.gz"
 SRC_DIR="krita-${VERSION}"
 PATCH_URI="
 	3.1.2-dllexport.patch
