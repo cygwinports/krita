@@ -2,7 +2,7 @@ inherit kf5
 
 NAME="krita"
 VERSION=3.3.3
-RELEASE=1
+RELEASE=2
 CATEGORY="Graphics"
 SUMMARY="KDE painting program"
 DESCRIPTION="Krita is a professional sketching and painting program."
